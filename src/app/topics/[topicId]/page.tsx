@@ -2,26 +2,28 @@ import { notFound } from 'next/navigation';
 import TopicLayout from '../../../components/TopicLayout';
 import { fetchTopicById } from '../../../api';
 
-interface TopicPageProps {
-  params: {
-    topicId: string;
-  };
-}
-
-export default async function TopicPage({ params }: TopicPageProps) {
-
-  
+// Remove explicit type definitions and let Next.js infer them
+export default async function TopicPage({
+  params,
+}: {
+  params: Promise<{ topicId: string }>
+}) {
   try {
-    const topic = await fetchTopicById(params.topicId);
+    const  topicId  =  (await params).topicId;
+    
+    if (!topicId) {
+      notFound();
+    }
+    
+    const topic = await fetchTopicById(topicId);
     
     if (!topic) {
       notFound();
     }
-
+    
     return <TopicLayout topic={topic} />;
   } catch (error) {
-    console.error('Error fetching topic:', error);
+    console.error('Error loading topic:', error);
     notFound();
   }
 }
-

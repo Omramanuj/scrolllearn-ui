@@ -11,7 +11,7 @@ export default function PopularTopics() {
 
   useEffect(() => {
     loadTopics();
-  }, []);
+  }, );
 
   async function loadTopics() {
     try {

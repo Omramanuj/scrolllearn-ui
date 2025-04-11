@@ -67,11 +67,11 @@ export default function ContentGenerationForm() {
             onChange={(e) => setFormData({ ...formData, level: e.target.value })}
             required
           >
-            <option value="I'm new to this topic">I'm new to this topic</option>
+            <option value="I'm new to this topic">I&apos;m new to this topic</option>
             <option value="I know some basics">I know some basics</option>
             <option value="I can understand intermediate concepts">I can understand intermediate concepts</option>
-            <option value="I'm at an advanced level">I'm at an advanced level</option>
-            <option value="I'm an expert looking to refresh">I'm an expert looking to refresh</option>
+            <option value="I'm at an advanced level">I&apos;m at an advanced level</option>
+            <option value="I'm an expert looking to refresh">I&apos;m an expert looking to refresh</option>
           </select>
         </div>
         <div>
