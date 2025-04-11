@@ -1,6 +1,6 @@
 import { Topic } from '../types';
 
-const API_BASE_URL = 'http://localhost:6969/api';
+const API_BASE_URL = 'https://scroll-learn-server.vercel.app/api';
 
 export async function fetchTopics(): Promise<Topic[]> {
   try {
