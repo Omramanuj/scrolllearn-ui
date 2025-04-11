@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
-import { topics } from '../../../data/mockData';
 import TopicLayout from '../../../components/TopicLayout';
+import { fetchTopicById } from '../../../api';
 
 interface TopicPageProps {
   params: {
@@ -8,20 +8,20 @@ interface TopicPageProps {
   };
 }
 
-export default function TopicPage({ params }: TopicPageProps) {
-  const { topicId } = params;
-  const topic = topics.find((t) => t.id === topicId);
+export default async function TopicPage({ params }: TopicPageProps) {
 
-  if (!topic) {
+  
+  try {
+    const topic = await fetchTopicById(params.topicId);
+    
+    if (!topic) {
+      notFound();
+    }
+
+    return <TopicLayout topic={topic} />;
+  } catch (error) {
+    console.error('Error fetching topic:', error);
     notFound();
   }
-
-  return <TopicLayout topic={topic} />;
 }
 
-// Generate static paths for all topics
-export function generateStaticParams() {
-  return topics.map((topic) => ({
-    topicId: topic.id,
-  }));
-}

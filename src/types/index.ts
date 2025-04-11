@@ -1,7 +1,7 @@
 // Define types for our educational content
 
 export interface Topic {
-  id: string;
+  _id: string;
   topic: string;
   level: string;
   description: string;

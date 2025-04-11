@@ -8,6 +8,7 @@ export async function fetchTopics(): Promise<Topic[]> {
     if (!response.ok) {
       throw new Error('Failed to fetch topics');
     }
+    console.log(response)
     return response.json();
   } catch (error) {
     console.error('Error fetching topics:', error);
@@ -23,10 +24,13 @@ interface GenerateCardsRequest {
 
 export async function fetchTopicById(id: string): Promise<Topic> {
   try {
+    console.log(id)
+    console.log(typeof id)
     const response = await fetch(`${API_BASE_URL}/topics-content/${id}`);
     if (!response.ok) {
       throw new Error('Failed to fetch topic');
     }
+    console.log(response) 
     return response.json();
   } catch (error) {
     console.error('Error fetching topic:', error);
