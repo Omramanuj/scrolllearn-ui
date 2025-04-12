@@ -51,8 +51,12 @@ export async function generateLearningCards(request: GenerateCardsRequest) {
     if (!response.ok) {
       throw new Error('Failed to generate learning cards');
     }
-    console.log(response.json())
-    return response.json();
+    
+    // Fix: Don't call response.json() twice
+    // Store the result in a variable instead
+    const result = await response.json();
+    console.log(result);
+    return result;
   } catch (error) {
     console.error('Error generating learning cards:', error);
     throw error;

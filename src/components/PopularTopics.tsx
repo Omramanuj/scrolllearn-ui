@@ -17,9 +17,6 @@ export default function PopularTopics() {
     try {
       const fetchedTopics = await fetchTopics();
       setTopics(fetchedTopics);
-      for (let i = 0; i < topics.length; i++) {
-        console.log(topics[i]);
-      }
     } catch (error) {
       console.error('Failed to load topics:', error);
     } finally {
